@@ -1,3 +1,4 @@
+import Header from "./components/header"
 
 
 export default function RootLayout({
@@ -6,6 +7,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <body>{children}</body>
+    <body>
+      <Header />
+      <main>
+        {children}
+      </main>
+    </body>
   )
 }
