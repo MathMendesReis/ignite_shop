@@ -1,6 +1,7 @@
 export default function Home() {
   return (
-    <div>
+    <div className="w-[1038px] pt-8 pb-8 h-[50rem]">
+
     </div>
   )
 }
