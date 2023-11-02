@@ -4,31 +4,35 @@ import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import CardProd from "./cardProd"
 
-export default function Slide() {
+interface Props {
+  children: React.ReactNode
+}
+export default function Slide({ children }: Props) {
   const [ref] = useKeenSlider<HTMLDivElement>({
     breakpoints: {
-      "(min-width: 400px)": {
-        slides: { perView: 2, spacing: 5 },
+      "(min-width: 696px)": {
+        slides: {
+          perView: 2,
+          spacing: 5
+        },
       },
-      "(min-width: 1000px)": {
-        slides: { perView: 2, spacing: 10 },
+      "(min-width: 1440px)": {
+        slides: {
+          perView: 3,
+          spacing: 10,
+        },
       },
     },
-    slides: { perView: 1 },
+    slides: {
+      perView: 1,
+    },
+    loop: true,
+
+
   })
   return (
     <div ref={ref} className="keen-slider">
-      <CardProd />
-      <CardProd />
-      <CardProd />
-      <CardProd />
-      <CardProd />
-      <CardProd />
+      {children}
     </div>
   )
 }
-// width: 696px;
-// height: 656px;
-// border-radius: 8px;
-// background: linear-gradient(180deg, #1EA483 0%, #7465D4 100%);
-// box-shadow: 0px 0px 48px 0px rgba(0, 0, 0, 0.90);
