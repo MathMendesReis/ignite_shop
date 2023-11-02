@@ -8,7 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
-
+      backgroundImage: {
+        'gradient-linear': 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%);',
+      }
     }
   },
   plugins: [],
