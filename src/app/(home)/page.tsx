@@ -5,7 +5,7 @@ import Stripe from "stripe";
 
 async function getAllProducts(): Promise<Stripe.Response<Stripe.ApiList<Stripe.Product>>> {
   const products = await stripe.products.list({
-    expand: ['data.default_price']
+    expand: ['data.default_price'],
   });
   return products
 }
@@ -16,13 +16,14 @@ export default async function Home() {
     <div className="w-[1440px] min-h-[50rem] flex items-center justify-center ml-[13%]">
       <Slide>
         {data.map((item) => {
-          const priceFormat = item.default_price as Stripe.Price
+          const price = item.default_price as Stripe.Price
+
           return (
             <CardProd
               key={item.id}
               id={item.id}
               title={item.name}
-              price={priceFormat}
+              price={price}
               image={item.images[0]}
             />
           );
