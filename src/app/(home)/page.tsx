@@ -1,3 +1,4 @@
+
 import { stripe } from "@/lib/stripe";
 import CardProd from "./components/cardProd";
 import Slide from "./components/slider";

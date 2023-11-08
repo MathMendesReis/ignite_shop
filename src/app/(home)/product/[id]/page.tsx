@@ -1,7 +1,9 @@
 import BgGradienteDefault from "@/components/bgGradienteDefaut"
+import ButtonAddCart from "@/components/buttonAddCart"
 import ImageProduct from "@/components/imageProduct"
 import NameProduct from "@/components/nameProduct"
 import PriceProduct from "@/components/price-product"
+import useCartState from "@/context/cart/store"
 import { stripe } from "@/lib/stripe"
 import Stripe from "stripe"
 
@@ -12,6 +14,7 @@ interface ProductProps {
 }
 
 async function getProduct(id: string): Promise<Stripe.Response<Stripe.Product>> {
+
   const response = await stripe.products.retrieve(id, {
     expand: ["default_price"],
   })
@@ -30,9 +33,7 @@ export default async function PageProduct({ params }: ProductProps) {
           <PriceProduct price={product.default_price as Stripe.Price} />
           <p className="text-[#C4C4CC] text-lg not-italic font-normal leading-[160%]">{product.description}</p>
           <div className="mt-auto">
-            <button className="flex w-[520px] justify-center items-center gap-2.5 px-8 py-5 rounded-lg  bg-[#00875f] ">
-              <span className="text-[#FFF] text-lg not-italic font-bold leading-[160%] font-family: Roboto">comprar agora</span>
-            </button>
+            <ButtonAddCart product={product}/>
           </div>
         </div>
       </section>
