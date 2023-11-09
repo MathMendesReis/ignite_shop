@@ -2,16 +2,6 @@
 import Stripe from "stripe";
 import { create, useStore } from "zustand";
 
-export interface IProduct {
-  id: string;
-  name: string;
-  imageUrl: string;
-  price: string;
-  numberPrice: number;
-  description: string;
-  defaultPriceId: string;
-}
-
 type MyStore = {
   cartItems: Stripe.Product[];
   cartTotal: number;
@@ -31,7 +21,7 @@ const store = create<MyStore>((set) => ({
     }
     return {
       cartItems: [...state.cartItems, product],
-    };
+      };
   }),
   removeCartItem: (productId) =>
     set((state) => ({

@@ -12,7 +12,7 @@ type Props = {
 
 export default function Dialog() {
   const { show, toggleShow } = ModalState()
-  const { cartItems,removeCartItem } = useCartState()
+  const { cartItems, removeCartItem,cartTotal } = useCartState()
 
 
   if (!show) {
@@ -46,9 +46,9 @@ export default function Dialog() {
                 <p className="text-zinc-200 text-lg font-bold font-['Roboto'] leading-[28.80px]">R$ 79,90</p>
               </div>
               <div className="flex justify-center items-center gap-2.5">
-                <button 
-                onClick={()=>removeCartItem(item.id)}
-                className="mr-auto">
+                <button
+                  onClick={() => removeCartItem(item.id)}
+                  className="mr-auto">
                   <p className="text-emerald-700 text-base font-bold font-['Roboto'] leading-relaxed">Remover</p>
                 </button>
               </div>
@@ -56,6 +56,20 @@ export default function Dialog() {
           </article>
         ))}
       </section>
+      <table className="w-[384px] ">
+        <tr>
+          <td className="text-zinc-200 text-base font-normal font-['Roboto'] leading-relaxed">Quantidade</td>
+          <td className="text-zinc-200 text-base font-normal font-['Roboto'] leading-relaxed">{cartItems.length}</td>
+        </tr>
+        <tr>
+          <td className="text-zinc-200 text-base font-normal font-['Roboto'] leading-relaxed">Valor total</td>
+          <td className="text-zinc-200 text-base font-normal font-['Roboto'] leading-relaxed">{cartTotal}</td>
+        </tr>
+
+      </table>
+      <button className="w-96 h-[69px] px-8 py-5 bg-emerald-700 rounded-lg justify-center items-center gap-2.5 inline-flex">
+        <p className="text-white text-lg font-bold font-['Roboto'] leading-[28.80px]">Finalizar compra</p>
+      </button>
     </dialog>
   )
 }
