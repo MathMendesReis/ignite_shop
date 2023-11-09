@@ -21,9 +21,7 @@ async function onOk() {
       <Header />
       <main>
         {children}
-        <Dialog title="Example Modal" onClose={onClose} onOk={onOk}>
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam eligendi odio ipsa nostrum dolores voluptas architecto tempore nulla voluptatibus vel, placeat explicabo exercitationem id officia laborum doloremque blanditiis earum accusamus.</p>
-        </Dialog>
+        <Dialog/>
       </main>
     </body>
   )
